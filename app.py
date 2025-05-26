@@ -11,11 +11,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/calculate")
 async def calculate(request: Request):
     data = await request.json()
     try:
-        result = eval(data["expression"].replace('×', '*').replace('÷', '/'))
+        result = eval(data["expression"].replace("×", "*").replace("÷", "/"))
         return {"result": str(result)}
     except:
         return {"result": "Error"}
